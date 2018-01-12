@@ -38,7 +38,7 @@ public class Joueur {
 	}
 	
 	public void piocher(){
-		this.main.add(this.pioche.piocher(String this.heros.getType()));
+		this.main.add(this.pioche.piocher(this.heros.getType()));
 	}
 	
 	/**

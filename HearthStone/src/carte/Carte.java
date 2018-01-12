@@ -1,14 +1,11 @@
 package carte;
 
-import java.util.ArrayList;
-
-import decoratorCarte.DecoratorEffet;
-import plateau.Observable;
-import plateau.Observer;
 import etatCarte.EtatCarte;
+import etatCarte.NonInvoque;
 
 public abstract class Carte {
-	public EtatCarte etat;
+	public EtatCarte etat = new NonInvoque();
+	
 
 	public void jouer() { this.etat.jouer(); }
 	

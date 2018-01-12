@@ -2,7 +2,6 @@ package carte;
 
 import java.util.ArrayList;
 
-import decoratorCarte.DecoratorEffet;
 import plateau.Observable;
 import plateau.Observer;
 
