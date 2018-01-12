@@ -19,17 +19,17 @@ public class Joueur {
 	
 	/**
 	 * Constructeur de classe.
-	 * Les attributs de la classe sont initialis�s durant une partie
+	 * Les attributs de la classe sont initialisés durant une partie
 	 */
 	public Joueur() {
 		super();
 	}
 	
-	public void afficherMain(){
+	public void afficherListeCartes(ArrayList<Carte> cartes){
 		
 		int cpt = 0;
 		
-		for (Carte carte : main){
+		for (Carte carte : cartes){
 			System.out.println(carte.toString() + " id : " + cpt + "/b");
 			cpt ++;
 		}
@@ -44,7 +44,7 @@ public class Joueur {
 		else return this.plateau.getServiteursJ2();	
 	}
 	
-	private ArrayList<Serviteur> getServiteursEnnemies(){
+	private ArrayList<Serviteur> getServiteursEnnemis(){
 		if (!estJ1)return this.plateau.getServiteursJ1();
 		else return this.plateau.getServiteursJ2();
 	}
@@ -72,7 +72,29 @@ public class Joueur {
 			switch(input){
 				case "Jouer": 
 					System.out.println("Selectionnez une carte parmis la liste avec le numéro lui correspondant");
-					this.afficherMain();
+					this.afficherListeCartes(this.main);
+					int inputInt = sc.nextInt();
+					this.invoquerCarte(inputInt);
+				case "Attaquer":
+					
+					ArrayList<Serviteur> servEnnemis = this.getServiteursEnnemis();
+					ArrayList<Carte> cartesEnnemies = new ArrayList<Carte>(servEnnemis);
+					System.out.println("Quel ennemi ? Entrez son id");
+					this.afficherListeCartes(cartesEnnemies);
+					int ennemi = sc.nextInt();
+					
+					Serviteur servEnnemi = servEnnemis.get(ennemi);
+					
+					System.out.println("Avec quel allié ? Entrez son id");
+					ArrayList<Serviteur> servAllies = this.getMyServiteurs();
+					ArrayList<Carte> cartesAllies = new ArrayList<Carte>(servAllies);
+					this.afficherListeCartes(cartesAllies);
+					int allie = sc.nextInt();
+					
+					Serviteur servAllie = servAllies.get(allie);
+					
+					
+					this.plateau.monstreAttaqueMonstre(servAllie, servEnnemi, estJ1);
 					
 			}
 			
