@@ -35,7 +35,7 @@ public class Joueur {
 		int cpt = 0;
 		
 		for (Carte carte : cartes){
-			System.out.println(carte.toString() + " id : " + cpt + "/b");
+			System.out.println(carte.toString() + " id : " + cpt);
 			cpt ++;
 		}
 	}
