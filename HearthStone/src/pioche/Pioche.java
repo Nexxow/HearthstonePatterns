@@ -4,7 +4,7 @@ import carte.Carte;
 import carte.CarteChefDeRaid;
 import carte.CarteChevaucheurDeLoup;
 import carte.CarteGuerrierAvocasCommisDoffice;
-import carte.CarteGuerrierMaîtriseDuBlocage;
+import carte.CarteGuerrierMaitriseDuBlocage;
 import carte.CarteGuerrierTourbillon;
 import carte.CarteMageExplosionDesArcanes;
 import carte.CarteMageImageMiroir;
@@ -28,25 +28,25 @@ public class Pioche extends FactoryCarte {
 		switch(nom) {
 			case "Sanglier brocheroc": carte = new CarteSanglierBrocheroc();
 				carte = new EffetCharge(carte);
-			case "Soldat du comté-de-l'or": carte = new CarteSoldatComteOr();
+			case "Soldat du comtï¿½-de-l'or": carte = new CarteSoldatComteOr();
 				carte = new EffetProvoc(carte);
 			case "Chevaucheur de loup": carte = new CarteChevaucheurDeLoup();
 				carte = new EffetCharge(carte);
 			case "Chef de raid": carte = new CarteChefDeRaid();
 				carte = new EffetChefDeRaid(carte);
-			case "Yéti noroit": carte = new CarteYetiNoroit();
+			case "Yï¿½ti noroit": carte = new CarteYetiNoroit();
 			case "Image miroir": carte = new CarteMageImageMiroir();
 			case "Explosion des arcanes": carte = new CarteMageExplosionDesArcanes();
-			case "Métamorphose": carte = new CarteMageMetamorphose();
+			case "Mï¿½tamorphose": carte = new CarteMageMetamorphose();
 			case "Champion frisselame": carte = new CartePalaChampionFrisselame();
 				carte = new EffetCharge(carte);
 				carte = new EffetVolDeVie(carte);
-			case "Bénédiction de puissance": carte = new CartePalaBenedictionDePuissance();
-			case "Consécration": carte = new CartePalaConsecration();
+			case "Bï¿½nï¿½diction de puissance": carte = new CartePalaBenedictionDePuissance();
+			case "Consï¿½cration": carte = new CartePalaConsecration();
 			case "Tourbillon": carte = new CarteGuerrierTourbillon();
 			case "Avocat commis d'office": carte = new CarteGuerrierAvocasCommisDoffice();
 				carte = new EffetProvoc(carte);
-			case "Maîtrise du blocage": carte = new CarteGuerrierMaîtriseDuBlocage();
+			case "Maï¿½trise du blocage": carte = new CarteGuerrierMaitriseDuBlocage();
 		}
 		return carte;
 		
