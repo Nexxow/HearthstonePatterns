@@ -22,12 +22,12 @@ public class Serviteur extends Carte implements Observable {
 		}
 	}
 	
-	public void AjoutDefense(int i){
+	public void ajoutDefense(int i){
 		this.defense += i;
 		this.notifierObs();
 	}
 	
-	public void AjoutAttaque(int i){
+	public void ajoutAttaque(int i){
 		this.attaque += i;
 		this.notifierObs();
 	}
