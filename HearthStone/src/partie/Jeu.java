@@ -32,6 +32,12 @@ public class Jeu {
 				}
 				// tour de jeu
 				this.plateau.getJoueur(isJ1).setMana(mana);
+				
+				if (isJ1) {
+					System.out.println("Joueur 1, à vous");
+				}
+				else { System.out.println("Joueur 2, à vous");}
+				
 				Joueur joueurPerdant = this.jouer(isJ1);
 				if (joueurPerdant!=null) return this.finDuJeu(joueurPerdant);
 			}

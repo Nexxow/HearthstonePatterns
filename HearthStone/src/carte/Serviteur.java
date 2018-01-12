@@ -9,7 +9,7 @@ public class Serviteur extends Carte implements Observable {
 
 	protected int attaque;
 	protected int defense;
-	private ArrayList<String> listEffetsStr;
+	private ArrayList<String> listEffetsStr = new ArrayList<String>();
 	
 	private ArrayList<Observer> obs;
 	
