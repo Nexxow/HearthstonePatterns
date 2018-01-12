@@ -30,19 +30,22 @@ public class Pioche extends FactoryCarte {
 
 	public Carte piocher(String type){
 		
-		ArrayList<String> listStringCartes = new ArrayList<>(Arrays.asList("Sanglier brocheroc", "Soldat du comté-de-l'or", "Chevaucheur de loup",
-				"Chef de raid", "Yéti noroit" ));
+		ArrayList<String> listStringCartes = new ArrayList<>(Arrays.asList("Sanglier brocheroc", "Soldat du comte-de-l'or", "Chevaucheur de loup",
+				"Chef de raid", "Yeti noroit" ));
 		
 		switch(type) {
 			case "Mage": listStringCartes.add("Image miroir");
 				listStringCartes.add("Explosion des arcanes");
-				listStringCartes.add("Métamorphose");
+				listStringCartes.add("Metamorphose");
+				break;
 			case "Paladin": listStringCartes.add("Champion frisselame");
-				listStringCartes.add("Bénédiction de puissance");
-				listStringCartes.add("Consécration");
+				listStringCartes.add("Benediction de puissance");
+				listStringCartes.add("Consecration");
+				break;
 			case "Guerrier": listStringCartes.add("Tourbillon");
 				listStringCartes.add("Avocat commis d'office");
-				listStringCartes.add("Maîtrise du blocage");
+				listStringCartes.add("Maitrise du blocage");
+				break;
 		}
 		
 		Random randomizer = new Random();
@@ -58,26 +61,41 @@ public class Pioche extends FactoryCarte {
 		switch(nom) {
 			case "Sanglier brocheroc": carte = new CarteSanglierBrocheroc();
 				carte = new EffetCharge((Serviteur) carte);
+				break;
 			case "Soldat du comte-de-l'or": carte = new CarteSoldatComteOr();
 				carte = new EffetProvoc((Serviteur) carte);
+				break;
 			case "Chevaucheur de loup": carte = new CarteChevaucheurDeLoup();
 				carte = new EffetCharge((Serviteur) carte);
+				break;
 			case "Chef de raid": carte = new CarteChefDeRaid();
 				carte = new EffetChefDeRaid((Serviteur) carte);
+				break;
 			case "Yeti noroit": carte = new CarteYetiNoroit();
+				break;
 			case "Image miroir": carte = new CarteMageImageMiroir();
+				break;
 			case "Explosion des arcanes": carte = new CarteMageExplosionDesArcanes();
+				break;
 			case "Metamorphose": carte = new CarteMageMetamorphose();
+				break;
 			case "Champion frisselame": carte = new CartePalaChampionFrisselame();
 				carte = new EffetCharge((Serviteur) carte);
 				carte = new EffetVolDeVie((Serviteur) carte);
+				break;
 			case "Benediction de puissance": carte = new CartePalaBenedictionDePuissance();
+				break;
 			case "Consecration": carte = new CartePalaConsecration();
+				break;
 			case "Tourbillon": carte = new CarteGuerrierTourbillon();
+				break;
 			case "Avocat commis d'office": carte = new CarteGuerrierAvocatCommisDoffice();
 				carte = new EffetProvoc((Serviteur) carte);
+				break;
 			case "Maitrise du blocage": carte = new CarteGuerrierMaitriseDuBlocage();
+				break;
 			case "Recrue de la Main d'argent": carte = new RecrueMainArgent();
+				break;
 		}
 		return carte;
 		

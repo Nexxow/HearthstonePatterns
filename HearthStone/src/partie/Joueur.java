@@ -22,9 +22,14 @@ public class Joueur {
 	 * Les attributs de la classe sont initialisés durant une partie
 	 */
 	public Joueur() {
-		super();
+		main = new ArrayList<Carte>();
+		pioche = new Pioche();
 	}
 	
+	public void setHeros(Heros heros) {
+		this.heros = heros;
+	}
+
 	public void afficherListeCartes(ArrayList<Carte> cartes){
 		
 		int cpt = 0;
@@ -48,6 +53,7 @@ public class Joueur {
 	}
 	
 	public void piocher(){
+		System.out.println(this.pioche.piocher("Mage"));
 		this.main.add(this.pioche.piocher(this.heros.getType()));
 	}
 	

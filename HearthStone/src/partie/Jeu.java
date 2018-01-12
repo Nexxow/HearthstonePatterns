@@ -21,11 +21,15 @@ public class Jeu {
 	public Joueur lancerPartie(){
 		while (true) {			
 			int mana = getManaTour();
-			boolean isJ1;
+			boolean isJ1 = true;
 			for (int i = 0; i < 2; i++) {
 				// choix du joueur
-				if (i==0) isJ1 =true;
-				else isJ1 =false;
+				if (i==0) {
+					isJ1 = true;
+				}
+				else {
+					isJ1 = false;
+				}
 				// tour de jeu
 				this.plateau.getJoueur(isJ1).setMana(mana);
 				Joueur joueurPerdant = this.jouer(isJ1);
