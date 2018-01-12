@@ -3,7 +3,7 @@ package pioche;
 import carte.Carte;
 import carte.CarteChefDeRaid;
 import carte.CarteChevaucheurDeLoup;
-import carte.CarteGuerrierAvocasCommisDoffice;
+import carte.CarteGuerrierAvocatCommisDoffice;
 import carte.CarteGuerrierMaitriseDuBlocage;
 import carte.CarteGuerrierTourbillon;
 import carte.CarteMageExplosionDesArcanes;
@@ -23,19 +23,19 @@ public class FactoryCarteConcrete extends FactoryCarte {
 		Carte carte = null;
 		switch(nom) {
 			case "Sanglier brocheroc": carte = new CarteSanglierBrocheroc();
-			case "Soldat du comt�-de-l'or": carte = new CarteSoldatComteOr();
+			case "Soldat du comte-de-l'or": carte = new CarteSoldatComteOr();
 			case "Chevaucheur de loup": carte = new CarteChevaucheurDeLoup();
 			case "Chef de raid": carte = new CarteChefDeRaid();
-			case "Y�ti noroit": carte = new CarteYetiNoroit();
+			case "Yieti noroit": carte = new CarteYetiNoroit();
 			case "Image miroir": carte = new CarteMageImageMiroir();
 			case "Explosion des arcanes": carte = new CarteMageExplosionDesArcanes();
-			case "M�tamorphose": carte = new CarteMageMetamorphose();
+			case "Metamorphose": carte = new CarteMageMetamorphose();
 			case "Champion frisselame": carte = new CartePalaChampionFrisselame();
-			case "B�n�diction de puissance": carte = new CartePalaBenedictionDePuissance();
-			case "Cons�cration": carte = new CartePalaConsecration();
+			case "Benediction de puissance": carte = new CartePalaBenedictionDePuissance();
+			case "Consecration": carte = new CartePalaConsecration();
 			case "Tourbillon": carte = new CarteGuerrierTourbillon();
-			case "Avocat commis d'office": carte = new CarteGuerrierAvocasCommisDoffice();
-			case "Ma�trise du blocage": carte = new CarteGuerrierMaitriseDuBlocage();
+			case "Avocat commis d'office": carte = new CarteGuerrierAvocatCommisDoffice();
+			case "Maitrise du blocage": carte = new CarteGuerrierMaitriseDuBlocage();
 		}
 		return carte;
 		

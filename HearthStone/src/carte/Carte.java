@@ -21,7 +21,7 @@ public abstract class Carte {
 	}
 	
 	public String toString(){
-		String str = "Carte " + this.nom + ", Coût en mana " + this.coutMana + ", Description : " + this.description;
+		String str = "Carte " + this.nom + ", Cout en mana " + this.coutMana + ", Description : " + this.description;
 		return str;
 	}
 	
