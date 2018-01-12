@@ -1,5 +1,5 @@
 package carte;
 
-public class CartePalaConsecration extends Carte {
+public class CartePalaConsecration extends Sort {
 
 }

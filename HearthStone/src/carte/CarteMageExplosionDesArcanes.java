@@ -1,5 +1,5 @@
 package carte;
 
-public class CarteMageExplosionDesArcanes extends Carte {
+public class CarteMageExplosionDesArcanes extends Sort {
 
 }

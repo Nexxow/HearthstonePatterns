@@ -1,5 +1,5 @@
 package carte;
 
-public class CartePalaBenedictionDePuissance extends Carte {
+public class CartePalaBenedictionDePuissance extends Sort {
 
 }

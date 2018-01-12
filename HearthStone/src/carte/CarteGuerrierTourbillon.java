@@ -1,5 +1,5 @@
 package carte;
 
-public class CarteGuerrierTourbillon extends Carte {
+public class CarteGuerrierTourbillon extends Sort {
 
 }
