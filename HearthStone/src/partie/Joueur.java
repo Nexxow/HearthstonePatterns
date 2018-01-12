@@ -38,7 +38,7 @@ public class Joueur {
 	}
 	
 	public void piocher(){
-		//this.main.add(this.pioche.fabriquerCarte("")); // en attente d'une cr�ation al�atoire de carte
+		this.main.add(this.pioche.piocher(String this.heros.getType()));
 	}
 	
 	/**
