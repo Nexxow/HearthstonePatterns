@@ -116,7 +116,12 @@ public class Joueur {
 		this.afficherListeCartes(cartesAllies);
 		int allie = sc.nextInt();
 
-		this.plateau.monstreAttaqueMonstre(allie, ennemi, isJ1);
+		if (ennemi != -1) {
+			this.plateau.monstreAttaqueMonstre(allie, ennemi, isJ1);
+		}
+		else {
+			this.plateau.attaquerJoueur(this.getMyServiteurs().get(allie).getAttaque() , isJ1);
+		}
 	}
 	
 	public void jouerInvocation(Scanner sc) {
