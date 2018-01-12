@@ -62,7 +62,8 @@ public class Joueur {
 		boolean finTour = false;
 		
 		while (finTour == false){
-			System.out.println("Selectionnez une action parmis celles-ci : Jouer, Attaquer, Terminer tour");
+			System.out.println("Selectionnez une action parmis celles-ci : 'Jouer' (sort ou carte), 'Attaquer', 'Pouvoir',"
+					+ " 'Terminer tour'");
 			Scanner sc = new Scanner(System.in);
 			String input = sc.nextLine();
 			
@@ -72,6 +73,9 @@ public class Joueur {
 					
 				case "Attaquer":
 					this.attaquer(sc);
+					
+				case "Pouvoir":
+					this.utiliserPouvoir();
 					
 				case "Terminer tour":
 					finTour = true;
