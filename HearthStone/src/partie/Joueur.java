@@ -76,15 +76,19 @@ public class Joueur {
 			switch(input){
 				case "Jouer": 
 					this.jouerInvocation(sc);
+					break;
 					
 				case "Attaquer":
 					this.attaquer(sc);
+					break;
 					
 				case "Pouvoir":
 					this.utiliserPouvoir();
+					break;
 					
 				case "Terminer tour":
 					finTour = true;
+					break;
 					
 			}
 			if (this.plateau.getJoueur(!isJ1).heros.estMort()){
@@ -97,6 +101,7 @@ public class Joueur {
 	
 	public void attaquer(Scanner sc) {
 		
+		System.out.println(this.plateau.getJoueur(!isJ1).heros.getPV());
 		int herosEnnemiPv = this.plateau.getJoueur(!isJ1).heros.getPV();
 		int herosEnnemiArmure = this.plateau.getJoueur(!isJ1).heros.getArmure();
 		
@@ -147,7 +152,7 @@ public class Joueur {
 	
 	private void invoquerCarte(int index){
 		if (this.main.get(index) instanceof Serviteur) {
-			this.invoquerServiteur(index);			
+			this.invoquerServiteur(index);
 		}else {
 			this.utiliserSort(index);
 		}
@@ -163,7 +168,10 @@ public class Joueur {
 	}
 
 	private void invoquerServiteur(int index){
+		
 		Serviteur s1 = (Serviteur) this.main.get(index);
+		System.out.println(s1);
+		System.out.println(this.isJ1);
 		this.plateau.invoquerServiteur(s1, this.isJ1);
 	}
 
