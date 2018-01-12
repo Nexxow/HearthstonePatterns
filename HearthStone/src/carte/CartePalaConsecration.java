@@ -17,6 +17,7 @@ public class CartePalaConsecration extends Sort {
 		ArrayList<Serviteur> array = plateau.getServiteurJoueur(!isJ1);
 		for (int i = 0; i < array.size(); i++) {
 			plateau.sortAttaqueMonstre(2, i, isJ1);
+			plateau.attaquerJoueur(2, isJ1);
 			
 		}
 		
