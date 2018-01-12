@@ -24,9 +24,22 @@ public class Plateau implements Observer {
 	public void SoinMonstre(int degat, Serviteur c2){
 		this.sortAttaqueMonstre(-degat, c2);
 	}
+	
+	public void invoquerServiteur(Serviteur s1, boolean isJ1){
+		this.readEffet(s1);
+		//TODO
+		
+	}
+	
+	/**
+	 * se lance à la création du 
+	 */
+	private void readEffet(Serviteur s1){
+		//TODO
+	}
 
 	@Override
-	public void actualiser() {
+	public void actualiser(Observable o) {
 		// TODO Auto-generated method stub
 		
 	}

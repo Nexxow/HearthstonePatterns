@@ -27,12 +27,12 @@ public class Joueur {
 		this.estJ1=estJ1;
 	}
 	
-	public ArrayList<Serviteur> getMyServiteurs(){
+	private ArrayList<Serviteur> getMyServiteurs(){
 		if (estJ1)return this.plateau.getServiteursJ1();
 		else return this.plateau.getServiteursJ2();	
 	}
 	
-	public ArrayList<Serviteur> getServiteursEnnemies(){
+	private ArrayList<Serviteur> getServiteursEnnemies(){
 		if (!estJ1)return this.plateau.getServiteursJ1();
 		else return this.plateau.getServiteursJ2();
 	}
@@ -55,4 +55,8 @@ public class Joueur {
 	public boolean aPerdu() {
 		return this.heros.estMort();
 	};
+	
+	private void invoquerServiteur(Serviteur s1){
+		
+	}
 }
