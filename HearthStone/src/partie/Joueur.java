@@ -85,7 +85,8 @@ public class Joueur {
 
 	public boolean aPerdu() {
 		return this.heros.estMort();
-	};
+	}
+	
 	private void invoquerCarte(int index){
 		if (this.main.get(index) instanceof Serviteur) {
 			this.invoquerServiteur(index);			
