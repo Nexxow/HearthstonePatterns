@@ -44,11 +44,11 @@ public class Joueur {
 		this.isJ1=isJ1;
 	}
 	
-	private ArrayList<Serviteur> getMyServiteurs(){
+	public ArrayList<Serviteur> getMyServiteurs(){
 		return this.plateau.getServiteurJoueur(isJ1);
 	}
 	
-	private ArrayList<Serviteur> getServiteursEnnemis(){
+	public ArrayList<Serviteur> getServiteursEnnemis(){
 		return this.plateau.getServiteurJoueur(!isJ1);
 	}
 	

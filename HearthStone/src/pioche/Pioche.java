@@ -13,12 +13,14 @@ import carte.CarteGuerrierTourbillon;
 import carte.CarteMageExplosionDesArcanes;
 import carte.CarteMageImageMiroir;
 import carte.CarteMageMetamorphose;
+import carte.CarteMouton;
 import carte.CartePalaBenedictionDePuissance;
 import carte.CartePalaChampionFrisselame;
 import carte.CartePalaConsecration;
 import carte.CarteSanglierBrocheroc;
 import carte.CarteSoldatComteOr;
 import carte.CarteYetiNoroit;
+import carte.ImageMiroir;
 import carte.RecrueMainArgent;
 import carte.Serviteur;
 import decoratorCarte.EffetCharge;
@@ -75,6 +77,8 @@ public class Pioche extends FactoryCarte {
 				break;
 			case "Image miroir": carte = new CarteMageImageMiroir();
 				break;
+			case "Image miroir2": carte = new ImageMiroir();
+				carte = new EffetProvoc((Serviteur) carte).getServ();
 			case "Explosion des arcanes": carte = new CarteMageExplosionDesArcanes();
 				break;
 			case "Metamorphose": carte = new CarteMageMetamorphose();
@@ -96,6 +100,7 @@ public class Pioche extends FactoryCarte {
 				break;
 			case "Recrue de la Main d'argent": carte = new RecrueMainArgent();
 				break;
+			case "Mouton": carte = new CarteMouton();
 		}
 		return carte;
 		

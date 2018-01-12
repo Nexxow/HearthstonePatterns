@@ -47,6 +47,10 @@ public class Plateau implements Observer {
 		this.getJoueur(isJ1).attaquePV(-this.getServiteurJoueur(isJ1).get(attaquant).getAttaque()) ; 
 		
 	}
+	
+	public void boostAttaque(int nb, int serviteur, boolean isJ1){
+		this.getServiteurJoueur(isJ1).get(serviteur).ajoutAttaque(nb);
+	}
 
 	private void isCarteMorte(int serviteur, boolean isJ1) {
 		if (this.getServiteurJoueur(isJ1).get(serviteur).getDefense()<=0)
