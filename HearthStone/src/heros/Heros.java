@@ -7,4 +7,8 @@ public class Heros {
 	public void utiliserPouvoir(){
 		this.pouvoir.utiliserPouvoir();
 	}
+
+	public boolean estMort() {
+		return this.PV<0;
+	}
 }
