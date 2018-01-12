@@ -23,7 +23,7 @@ public class Heros {
 	}
 
 	public boolean estMort() {
-		return this.PV<0;
+		return this.PV<=0;
 	}
 
 	public void attaquePV(int nb) {

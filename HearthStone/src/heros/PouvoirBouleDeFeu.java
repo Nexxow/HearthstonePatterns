@@ -1,6 +1,5 @@
 package heros;
 
-import carte.Serviteur;
 import plateau.Plateau;
 
 public class PouvoirBouleDeFeu implements Pouvoir {

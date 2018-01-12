@@ -77,7 +77,9 @@ public class Joueur {
 					finTour = true;
 					
 			}
-			
+			if (this.plateau.getJoueur(!isJ1).heros.estMort()){
+				return this.plateau.getJoueur(!isJ1);
+			}
 		}
 		
 		return null;
