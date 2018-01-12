@@ -13,14 +13,43 @@ public class Plateau implements Observer {
 	
 	
 	public void monstreAttaqueMonstre(Serviteur c1, Serviteur c2, boolean isJ1){
+		
+		c2.ajoutDefense(c1.getAttaque());
 		if (this.asVolDeVie(c1)){
-			if (isJ1) j1.addPV(c1.getAttaque()) ; 
-			else j2.addPV(c1.getAttaque());
+			this.effetVolDeVie(c1, isJ1);	
 		}
-		c2.ajoutDefense(c1.getAttaque());	
+		
 		c1.ajoutDefense(c2.getAttaque());
+		if (this.asVolDeVie(c2)){
+			this.effetVolDeVie(c2, !isJ1);	
+		}
+		
+		// Destruction des cartes si elles sont mortes
+		this.isCarteMorte(c1, isJ1);
+		this.isCarteMorte(c2, !isJ1);
+	
 	}
 	
+	private void effetVolDeVie(Serviteur c1, boolean isJ1) {
+		if (isJ1) j1.addPV(c1.getAttaque()) ; 
+		else j2.addPV(c1.getAttaque());
+		
+	}
+
+	private void isCarteMorte(Serviteur c1, boolean isJ1) {
+		if (c1.getDefense()<=0){	
+			if (isJ1){
+				for (int i = 0; i < serviteursJ1.size(); i++) {
+					if(serviteursJ1.get(i)==c1) serviteursJ1.remove(i);
+				}
+			}else{
+				for (int i = 0; i < serviteursJ2.size(); i++) {
+					if(serviteursJ2.get(i)==c1) serviteursJ2.remove(i);
+				}
+			}
+		}	
+	}
+
 	public void sortAttaqueMonstre(int degat, Serviteur c2){
 		c2.ajoutDefense(-degat);
 	}
