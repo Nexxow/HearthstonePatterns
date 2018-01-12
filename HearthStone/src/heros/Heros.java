@@ -5,6 +5,10 @@ public class Heros {
 	private Pouvoir pouvoir;
 	
 	public void utiliserPouvoir(){
-		// TODO
+		this.pouvoir.utiliserPouvoir();
+	}
+
+	public boolean estMort() {
+		return this.PV<0;
 	}
 }
