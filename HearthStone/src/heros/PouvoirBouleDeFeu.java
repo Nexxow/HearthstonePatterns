@@ -1,10 +1,12 @@
 package heros;
 
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import carte.Carte;
 import carte.Serviteur;
+
 import plateau.Plateau;
 
 public class PouvoirBouleDeFeu implements Pouvoir {
@@ -31,8 +33,8 @@ public class PouvoirBouleDeFeu implements Pouvoir {
 		plateau.getJoueur(isJ1).afficherListeCartes(cartesEnnemies);
 		indexEnnemi = sc.nextInt();
 		
-		if (indexEnnemi==-1) plateau.attaquerJoueur(2, isJ1);
-		else plateau.sortAttaqueMonstre(2, indexEnnemi, isJ1);
+		if (indexEnnemi==-1) plateau.attaquerJoueur(1, isJ1);
+		else plateau.sortAttaqueMonstre(1, indexEnnemi, isJ1);
 		
 		
 	}

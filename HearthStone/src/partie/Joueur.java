@@ -62,7 +62,8 @@ public class Joueur {
 		boolean finTour = false;
 		
 		while (finTour == false){
-			System.out.println("Selectionnez une action parmis celles-ci : Jouer, Attaquer, Terminer tour");
+			System.out.println("Selectionnez une action parmis celles-ci : 'Jouer' (sort ou carte), 'Attaquer', 'Pouvoir',"
+					+ " 'Terminer tour'");
 			Scanner sc = new Scanner(System.in);
 			String input = sc.nextLine();
 			
@@ -73,17 +74,26 @@ public class Joueur {
 				case "Attaquer":
 					this.attaquer(sc);
 					
+				case "Pouvoir":
+					this.utiliserPouvoir();
+					
 				case "Terminer tour":
 					finTour = true;
 					
 			}
-			
+			if (this.plateau.getJoueur(!isJ1).heros.estMort()){
+				return this.plateau.getJoueur(!isJ1);
+			}
 		}
 		
 		return null;
 	}
 	
 	public void attaquer(Scanner sc) {
+		
+		int herosEnnemiPv = this.plateau.getJoueur(!isJ1).heros.getPV();
+		int herosEnnemiArmure = this.plateau.getJoueur(!isJ1).heros.getArmure();
+		
 		ArrayList<Carte> cartesEnnemies;
 		System.out.println("Quel ennemi ? Entrez son id");
 		
@@ -95,9 +105,12 @@ public class Joueur {
 		else{
 			ArrayList<Serviteur> servEnnemis = this.getServiteursEnnemis();
 			cartesEnnemies = new ArrayList<Carte>(servEnnemis);
+			System.out.println("-1 pour attaquer le héros adverse, il possède " + herosEnnemiPv + " PV, et " + herosEnnemiArmure
+					+ " armure");
+			
 		}
 		
-	
+		
 		this.afficherListeCartes(cartesEnnemies);
 		int ennemi = sc.nextInt();
 		
@@ -107,8 +120,12 @@ public class Joueur {
 		this.afficherListeCartes(cartesAllies);
 		int allie = sc.nextInt();
 
-		
-		this.plateau.monstreAttaqueMonstre(allie, ennemi, isJ1);
+		if (ennemi != -1) {
+			this.plateau.monstreAttaqueMonstre(allie, ennemi, isJ1);
+		}
+		else {
+			this.plateau.attaquerJoueur(this.getMyServiteurs().get(allie).getAttaque() , isJ1);
+		}
 	}
 	
 	public void jouerInvocation(Scanner sc) {

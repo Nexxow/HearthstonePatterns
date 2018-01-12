@@ -1,6 +1,5 @@
 package heros;
 
-import carte.Carte;
 import carte.Serviteur;
 import pioche.Pioche;
 import plateau.Plateau;
