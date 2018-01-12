@@ -1,12 +1,15 @@
 package etatCarte;
 
-public interface EtatCarte {
+import carte.Carte;
 
-	public default void jouer(){}
+public abstract class EtatCarte {
+	protected Carte carte; 
+
+	public void jouer(){}
 	
-	public default void invoquer(){}
+	public void invoquer(){}
 	
-	public default void detruire(){}
+	public void detruire(){}
 	
 	
 }

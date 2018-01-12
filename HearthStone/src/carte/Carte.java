@@ -8,7 +8,7 @@ import plateau.Observer;
 import etatCarte.EtatCarte;
 
 public abstract class Carte implements Observable {
-	private EtatCarte etat;
+	public EtatCarte etat;
 	private ArrayList<Observer> obs;
 	private ArrayList<DecoratorEffet> listEffets;
 	
@@ -21,6 +21,7 @@ public abstract class Carte implements Observable {
 	public void invoquer() { this.etat.invoquer(); }
 
 	public void detruire() { this.etat.detruire(); }
+
 	
 	public void enregistrerObs(Observer ob){ this.obs.add(ob); }
 	

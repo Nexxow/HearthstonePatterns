@@ -1,6 +1,6 @@
 package etatCarte;
 
-public class PeutJouer implements EtatCarte {
+public class PeutJouer extends EtatCarte {
 
 	@Override
 	public void jouer() {
