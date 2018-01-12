@@ -11,59 +11,65 @@ public class Plateau implements Observer {
 	private Joueur j1;
 	private Joueur j2;
 	
+	public Plateau(Joueur j1, Joueur j2) {
+		this.j1 = j1;
+		this.j2 = j2;
+		this.serviteursJ1=new ArrayList<Serviteur>();
+		this.serviteursJ2=new ArrayList<Serviteur>();
+	}
 	
-	public void monstreAttaqueMonstre(Serviteur c1, Serviteur c2, boolean isJ1){
-		
-		c2.ajoutDefense(c1.getAttaque());
-		if (this.asVolDeVie(c1)){
-			this.effetVolDeVie(c1, isJ1);	
+	public Joueur getJoueur(boolean isJ1){
+		return (isJ1) ? this.j1 : this.j2;
+	}
+	
+	public ArrayList<Serviteur> getServiteurJoueur(boolean isJ1){
+		return (isJ1) ? this.serviteursJ1 : this.serviteursJ2;
+	}
+	
+	public void monstreAttaqueMonstre(int attaquant, int defenseur, boolean isJ1){
+		this.getServiteurJoueur(!isJ1).get(defenseur).ajoutDefense(-this.getServiteurJoueur(isJ1).get(attaquant).getAttaque());
+		if (this.asVolDeVie(this.getServiteurJoueur(isJ1).get(attaquant))){
+			this.effetVolDeVie(attaquant, isJ1);	
 		}
 		
-		c1.ajoutDefense(c2.getAttaque());
-		if (this.asVolDeVie(c2)){
-			this.effetVolDeVie(c2, !isJ1);	
+		this.getServiteurJoueur(isJ1).get(attaquant).ajoutDefense(-this.getServiteurJoueur(!isJ1).get(defenseur).getAttaque());
+		if (this.asVolDeVie(this.getServiteurJoueur(!isJ1).get(defenseur))){
+			this.effetVolDeVie(defenseur, !isJ1);	
 		}
 		
 		// Destruction des cartes si elles sont mortes
-		this.isCarteMorte(c1, isJ1);
-		this.isCarteMorte(c2, !isJ1);
+		this.isCarteMorte(attaquant, isJ1);
+		this.isCarteMorte(defenseur, !isJ1);
 	
 	}
 	
-	private void effetVolDeVie(Serviteur c1, boolean isJ1) {
-		if (isJ1) j1.addPV(c1.getAttaque()) ; 
-		else j2.addPV(c1.getAttaque());
+	private void effetVolDeVie(int attaquant, boolean isJ1) {
+		this.getJoueur(isJ1).attaquePV(-this.getServiteurJoueur(isJ1).get(attaquant).getAttaque()) ; 
 		
 	}
 
-	private void isCarteMorte(Serviteur c1, boolean isJ1) {
-		if (c1.getDefense()<=0){	
-			if (isJ1){
-				for (int i = 0; i < serviteursJ1.size(); i++) {
-					if(serviteursJ1.get(i)==c1) serviteursJ1.remove(i);
-				}
-			}else{
-				for (int i = 0; i < serviteursJ2.size(); i++) {
-					if(serviteursJ2.get(i)==c1) serviteursJ2.remove(i);
-				}
-			}
-		}	
+	private void isCarteMorte(int serviteur, boolean isJ1) {
+		if (this.getServiteurJoueur(isJ1).get(serviteur).getDefense()<=0)
+			this.getServiteurJoueur(isJ1).remove(serviteur);
 	}
 
-	public void sortAttaqueMonstre(int degat, Serviteur c2){
-		c2.ajoutDefense(-degat);
+	public void attaquerJoueur(int degat, boolean isJ1){
+		this.getJoueur(!isJ1).attaquePV(degat);
 	}
 	
-	public void SoinMonstre(int degat, Serviteur c2){
-		this.sortAttaqueMonstre(-degat, c2);
+	public void sortAttaqueMonstre(int degat, int defenseur, boolean isJ1){
+		this.getServiteurJoueur(!isJ1).get(defenseur).ajoutDefense(-degat);
+		this.isCarteMorte(defenseur, !isJ1);
+	}
+	
+	public void SoinMonstre(int valeur, int defenseur, boolean isJ1){
+		this.sortAttaqueMonstre(-valeur, defenseur, isJ1);
 	}
 	
 	public void invoquerServiteur(Serviteur s1, boolean isJ1){
 		s1.etat.invoquer();
 		s1 = this.effetCharge(s1);
-		if (isJ1) this.serviteursJ1.add(s1);
-		else this.serviteursJ2.add(s1);
-		
+		this.getServiteurJoueur(isJ1).add(s1);
 	}
 	
 	/**
@@ -102,20 +108,10 @@ public class Plateau implements Observer {
 		return false;
 	}
 	
-	
-
 	@Override
 	public void actualiser(Observable o) {
 		this.toString();
 		//TODO
-	}
-
-	public ArrayList<Serviteur> getServiteursJ1() {
-		return this.serviteursJ1;
-	}
-
-	public ArrayList<Serviteur> getServiteursJ2() {
-		return this.serviteursJ2;
 	}
 
 }

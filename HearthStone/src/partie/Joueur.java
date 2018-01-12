@@ -15,7 +15,7 @@ public class Joueur {
 	private Pioche pioche;
 	private Plateau plateau;
 	private int mana;
-	private boolean estJ1;
+	private boolean isJ1;
 	
 	/**
 	 * Constructeur de classe.
@@ -35,18 +35,16 @@ public class Joueur {
 		}
 	}
 	
-	public void setOrdreJeu(boolean estJ1){
-		this.estJ1=estJ1;
+	public void setOrdreJeu(boolean isJ1){
+		this.isJ1=isJ1;
 	}
 	
 	private ArrayList<Serviteur> getMyServiteurs(){
-		if (estJ1)return this.plateau.getServiteursJ1();
-		else return this.plateau.getServiteursJ2();	
+		return this.plateau.getServiteurJoueur(isJ1);
 	}
 	
 	private ArrayList<Serviteur> getServiteursEnnemis(){
-		if (!estJ1)return this.plateau.getServiteursJ1();
-		else return this.plateau.getServiteursJ2();
+		return this.plateau.getServiteurJoueur(!isJ1);
 	}
 	
 	public void piocher(){
@@ -81,7 +79,7 @@ public class Joueur {
 					ArrayList<Carte> cartesEnnemies;
 					System.out.println("Quel ennemi ? Entrez son id");
 					
-					ArrayList<Serviteur> serviteursTaunt = this.plateau.getEffetTaunt(estJ1);
+					ArrayList<Serviteur> serviteursTaunt = this.plateau.getEffetTaunt(isJ1);
 					
 					if (serviteursTaunt != null){
 						cartesEnnemies = new ArrayList<Carte>(serviteursTaunt);
@@ -106,7 +104,7 @@ public class Joueur {
 					
 					Serviteur servAllie = servAllies.get(allie);
 					
-					this.plateau.monstreAttaqueMonstre(servAllie, servEnnemi, estJ1);
+					this.plateau.monstreAttaqueMonstre(servAllie, servEnnemi, isJ1);
 					
 				case "Terminer tour":
 					finTour = true;
@@ -141,11 +139,24 @@ public class Joueur {
 
 	private void invoquerServiteur(int index){
 		Serviteur s1 = (Serviteur) this.main.get(index);
-		this.plateau.invoquerServiteur(s1, this.estJ1);
+		this.plateau.invoquerServiteur(s1, this.isJ1);
 	}
 
 	public void setMana(int mana) {
 		this.mana = mana;
+	}
+	
+	private void utiliserPouvoir(){
+		this.heros.utiliserPouvoir(isJ1, plateau);
+	}
+
+	public void attaquePV(int nb) {
+		this.heros.attaquePV(nb);
+		
+	}
+
+	public Heros getHeros() {	
+		return this.heros;
 	}
 
 }

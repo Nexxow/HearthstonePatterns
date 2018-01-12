@@ -1,16 +1,15 @@
 package partie;
 
+import plateau.Plateau;
+
 public class Jeu {
 	private int tour;
-	private Joueur j1;
-	private Joueur j2;
-	
+	private Plateau plateau;
 	
 	public Jeu(Joueur j1, Joueur j2) {
 		j1.setOrdreJeu(true);
-		this.j1 = j1;
 		j2.setOrdreJeu(false);
-		this.j2 = j2;
+		this.plateau=new Plateau(j1, j2);
 		this.tour = 0;
 	}
 
@@ -22,18 +21,18 @@ public class Jeu {
 	public Joueur lancerPartie(){
 		while (true) {			
 			int mana = getManaTour();
-			String joueur;
-			for (int i = 0; i <= 2; i++) {
-				if (i==1){
-					joueur = "j1";
-					this.j1.setMana(mana);
+			boolean isJ1;
+			for (int i = 0; i < 2; i++) {
+				if (i==0){
+					isJ1 =true;
+					this.plateau.getJoueur(true).setMana(mana);
 				}
 				else{
-					joueur= "j2";
-					this.j2.setMana(mana);
+					isJ1 =false;
+					this.plateau.getJoueur(false).setMana(mana);
 				}
 				
-				Joueur joueurPerdant = this.jouer(joueur, mana);
+				Joueur joueurPerdant = this.jouer(isJ1);
 				if (joueurPerdant!=null) return this.finDuJeu(joueurPerdant);
 			}
 			this.tour+=1;
@@ -46,15 +45,10 @@ public class Jeu {
 	 * @param mana max du joueur pour ce tour
 	 * @return le joueur perdant. Null si il n'y en a pas.
 	 */
-	private Joueur jouer(String joueur, int mana) {
+	private Joueur jouer(boolean isJ1) {
 		Joueur joueurPerdant;
-		if (joueur=="j1"){
-			this.piocher(this.j1);
-			joueurPerdant = this.j1.jouer(mana);
-		}else{
-			this.piocher(this.j2);
-			joueurPerdant = this.j2.jouer(mana);
-		}
+		this.piocher(isJ1);
+		joueurPerdant = this.plateau.getJoueur(isJ1).jouer();
 		return joueurPerdant;
 	}
 
@@ -82,20 +76,20 @@ public class Jeu {
 	 * organise la mani�re de piocher � chaque tour
 	 * @param joueur qui pioche
 	 */
-	private void piocher(Joueur joueur) {
-		if ((this.tour==0)&&(joueur==this.j1)){
-			joueur.piocher();
-			joueur.piocher();
-			joueur.piocher();
+	private void piocher(boolean isJ1) {
+		if ((this.tour==0)&&(isJ1==true)){
+			this.plateau.getJoueur(isJ1).piocher();
+			this.plateau.getJoueur(isJ1).piocher();
+			this.plateau.getJoueur(isJ1).piocher();
 		}
-		else if ((this.tour==0)&&(joueur==this.j2)){
-			joueur.piocher();
-			joueur.piocher();
-			joueur.piocher();
-			joueur.piocher();
+		else if ((this.tour==0)&&(isJ1==false)){
+			this.plateau.getJoueur(isJ1).piocher();
+			this.plateau.getJoueur(isJ1).piocher();
+			this.plateau.getJoueur(isJ1).piocher();
+			this.plateau.getJoueur(isJ1).piocher();
 		}
 		else {
-			joueur.piocher();
+			this.plateau.getJoueur(isJ1).piocher();
 		}
 		
 	}

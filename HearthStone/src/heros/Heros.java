@@ -1,5 +1,7 @@
 package heros;
 
+import plateau.Plateau;
+
 public class Heros {
 	private int PV;
 	private Pouvoir pouvoir;
@@ -12,18 +14,26 @@ public class Heros {
 		this.type = type;
 	}
 	
-	
 	public String getType() {
 		return type;
 	}
 
-
-	public void utiliserPouvoir(){
-		this.pouvoir.utiliserPouvoir();
+	public void utiliserPouvoir(boolean isJ1, Plateau plateau){
+		this.pouvoir.utiliserPouvoir(isJ1, plateau);
 	}
 
 	public boolean estMort() {
 		return this.PV<0;
+	}
+
+	public void attaquePV(int nb) {
+		this.PV-=nb;
+		
+	}
+
+	public void attaqueArmure(int nb) {
+		this.armure-=nb;
+		
 	}
 	
 }
