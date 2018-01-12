@@ -2,6 +2,7 @@ package carte;
 
 import java.util.ArrayList;
 
+import decoratorCarte.DecoratorEffet;
 import plateau.Observable;
 import plateau.Observer;
 import etatCarte.EtatCarte;
@@ -9,7 +10,12 @@ import etatCarte.EtatCarte;
 public abstract class Carte implements Observable {
 	private EtatCarte etat;
 	private ArrayList<Observer> obs;
+	private ArrayList<DecoratorEffet> listEffets;
 	
+	public ArrayList<DecoratorEffet> getListEffets() {
+		return listEffets;
+	}
+
 	public void jouer() { this.etat.jouer(); }
 	
 	public void invoquer() { this.etat.invoquer(); }
