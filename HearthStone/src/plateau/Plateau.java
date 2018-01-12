@@ -12,9 +12,10 @@ public class Plateau implements Observer {
 	private Joueur j2;
 	
 	
-	public void monstreAttaqueMonstre(Serviteur c1, Serviteur c2){
+	public void monstreAttaqueMonstre(Serviteur c1, Serviteur c2, boolean isJ1){
 		if (this.asVolDeVie(c1)){
-			j1.addPV(c1.getAttaque());
+			if (isJ1) j1.addPV(c1.getAttaque()) ; 
+			else j2.addPV(c1.getAttaque());
 		}
 		c2.ajoutDefense(c1.getAttaque());	
 		c1.ajoutDefense(c2.getAttaque());
