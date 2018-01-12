@@ -1,11 +1,10 @@
 package etatCarte;
 
-public class Attente implements EtatCarte {
+public class Attente extends EtatCarte {
 	
 	@Override
 	public void detruire() {
-		// TODO Auto-generated method stub
-
+		this.carte.etat=new Mort();
 	}
 
 }

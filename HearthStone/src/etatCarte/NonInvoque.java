@@ -1,6 +1,6 @@
 package etatCarte;
 
-public class NonInvoque implements EtatCarte {
+public class NonInvoque extends EtatCarte {
 
 	@Override
 	public void invoquer() {

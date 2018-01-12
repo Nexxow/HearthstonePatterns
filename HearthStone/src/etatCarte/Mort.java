@@ -1,5 +1,5 @@
 package etatCarte;
 
-public class Mort implements EtatCarte {
+public class Mort extends EtatCarte {
 
 }
