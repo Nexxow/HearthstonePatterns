@@ -9,6 +9,7 @@ public class EffetVolDeVie extends DecoratorEffet {
 				"à la hauteur des dégats infligés";
 		this.serv = serv;
 		this.serv.getListEffets().add("serv");
+		this.serv.ajoutDescription(this.description);
 	}
 	
 }

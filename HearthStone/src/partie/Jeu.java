@@ -24,8 +24,14 @@ public class Jeu {
 			int mana = getManaTour();
 			String joueur;
 			for (int i = 0; i <= 2; i++) {
-				if (i==1) joueur = "j1";
-				else joueur= "j2";
+				if (i==1){
+					joueur = "j1";
+					this.j1.setMana(mana);
+				}
+				else{
+					joueur= "j2";
+					this.j2.setMana(mana);
+				}
 				
 				Joueur joueurPerdant = this.jouer(joueur, mana);
 				if (joueurPerdant!=null) return this.finDuJeu(joueurPerdant);

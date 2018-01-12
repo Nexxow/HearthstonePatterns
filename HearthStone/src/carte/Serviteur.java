@@ -45,4 +45,8 @@ public class Serviteur extends Carte implements Observable {
 		return defense;
 	}
 	
+	public void ajoutDescription(String descr){
+		this.description += (" " + descr);
+	}
+	
 }

@@ -9,6 +9,7 @@ public class EffetChefDeRaid extends DecoratorEffet {
 				"serviteur est vivant)";
 		this.serv = serv;
 		this.serv.getListEffets().add("Chef");
+		this.serv.ajoutDescription(this.description);
 	}
 	
 }

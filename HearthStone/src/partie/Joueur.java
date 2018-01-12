@@ -1,6 +1,7 @@
 package partie;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import pioche.Pioche;
 import plateau.Plateau;
@@ -13,6 +14,7 @@ public class Joueur {
 	private Heros heros;
 	private Pioche pioche;
 	private Plateau plateau;
+	private int mana;
 	private boolean estJ1;
 	
 	/**
@@ -21,6 +23,16 @@ public class Joueur {
 	 */
 	public Joueur() {
 		super();
+	}
+	
+	public void afficherMain(){
+		
+		int cpt = 0;
+		
+		for (Carte carte : main){
+			System.out.println(carte.toString() + " id : " + cpt + "/b");
+			cpt ++;
+		}
 	}
 	
 	public void setOrdreJeu(boolean estJ1){
@@ -42,14 +54,33 @@ public class Joueur {
 	}
 	
 	/**
-	 * Appel� par Jeu afin de permettre au joueur de jouer.
+	 * Appelé par Jeu afin de permettre au joueur de jouer.
 	 * 
 	 * @param mana maximal du joueur pour ce tour
 	 * @return le joueur perdant. Null si il n'y en a pas.
 	 */
-	public Joueur jouer(int mana) {
+	public Joueur jouer() {
 		//TODO demande au joueur de selectionner des cartes et des actions.
-		return null;		
+		
+		boolean finTour = false;
+		
+		while (finTour == false){
+			System.out.println("Selectionnez une action parmis celles-ci : Jouer, Attaquer, Terminer tour");
+			Scanner sc = new Scanner(System.in);
+			String input = sc.nextLine();
+			
+			switch(input){
+				case "Jouer": 
+					System.out.println("Selectionnez une carte parmis la liste avec le numéro lui correspondant");
+					this.afficherMain();
+					
+			}
+			
+		}
+		
+		
+		
+		return null;
 	}
 
 	public boolean aPerdu() {
@@ -61,6 +92,8 @@ public class Joueur {
 		}else {
 			this.utiliserSort(index);
 		}
+		int coutMana = this.main.get(index).getCoutMana();
+		this.mana -= coutMana;
 		this.main.remove(index);
 	}
 	
@@ -74,4 +107,9 @@ public class Joueur {
 		Serviteur s1 = (Serviteur) this.main.get(index);
 		this.plateau.invoquerServiteur(s1, this.estJ1);
 	}
+
+	public void setMana(int mana) {
+		this.mana = mana;
+	}
+
 }

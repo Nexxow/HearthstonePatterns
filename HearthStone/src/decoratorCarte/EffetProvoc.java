@@ -9,6 +9,7 @@ public class EffetProvoc extends DecoratorEffet {
 				"ou un autre serviteur sans provocation";
 		this.serv = serv;
 		this.serv.getListEffets().add("provocation");
+		this.serv.ajoutDescription(this.description);
 	}
 	
 }
