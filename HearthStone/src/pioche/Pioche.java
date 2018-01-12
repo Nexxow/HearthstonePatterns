@@ -60,16 +60,16 @@ public class Pioche extends FactoryCarte {
 		Carte carte = null;
 		switch(nom) {
 			case "Sanglier brocheroc": carte = new CarteSanglierBrocheroc();
-				carte = new EffetCharge((Serviteur) carte);
+				carte = new EffetCharge((Serviteur) carte).getServ();
 				break;
 			case "Soldat du comte-de-l'or": carte = new CarteSoldatComteOr();
-				carte = new EffetProvoc((Serviteur) carte);
+				carte = new EffetProvoc((Serviteur) carte).getServ();
 				break;
 			case "Chevaucheur de loup": carte = new CarteChevaucheurDeLoup();
-				carte = new EffetCharge((Serviteur) carte);
+				carte = new EffetCharge((Serviteur) carte).getServ();
 				break;
 			case "Chef de raid": carte = new CarteChefDeRaid();
-				carte = new EffetChefDeRaid((Serviteur) carte);
+				carte = new EffetChefDeRaid((Serviteur) carte).getServ();
 				break;
 			case "Yeti noroit": carte = new CarteYetiNoroit();
 				break;
@@ -80,8 +80,8 @@ public class Pioche extends FactoryCarte {
 			case "Metamorphose": carte = new CarteMageMetamorphose();
 				break;
 			case "Champion frisselame": carte = new CartePalaChampionFrisselame();
-				carte = new EffetCharge((Serviteur) carte);
-				carte = new EffetVolDeVie((Serviteur) carte);
+				carte = new EffetCharge((Serviteur) carte).getServ();
+				carte = new EffetVolDeVie((Serviteur) carte).getServ();
 				break;
 			case "Benediction de puissance": carte = new CartePalaBenedictionDePuissance();
 				break;
@@ -90,7 +90,7 @@ public class Pioche extends FactoryCarte {
 			case "Tourbillon": carte = new CarteGuerrierTourbillon();
 				break;
 			case "Avocat commis d'office": carte = new CarteGuerrierAvocatCommisDoffice();
-				carte = new EffetProvoc((Serviteur) carte);
+				carte = new EffetProvoc((Serviteur) carte).getServ();
 				break;
 			case "Maitrise du blocage": carte = new CarteGuerrierMaitriseDuBlocage();
 				break;

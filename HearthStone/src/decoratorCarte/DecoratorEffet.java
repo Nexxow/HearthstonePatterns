@@ -13,6 +13,10 @@ public abstract class DecoratorEffet extends Serviteur {
 		return description;
 	}
 
+	public Serviteur getServ() {
+		return serv;
+	}
+
 	/**
 	 * @param description the description to set
 	 */
