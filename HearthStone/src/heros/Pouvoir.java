@@ -1,5 +1,6 @@
 package heros;
 
-public class Pouvoir {
+public interface Pouvoir {
 
+	public void utiliserPouvoir();
 }

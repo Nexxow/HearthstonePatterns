@@ -5,6 +5,6 @@ public class Heros {
 	private Pouvoir pouvoir;
 	
 	public void utiliserPouvoir(){
-		// TODO
+		this.pouvoir.utiliserPouvoir();
 	}
 }
