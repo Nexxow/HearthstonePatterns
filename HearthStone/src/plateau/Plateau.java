@@ -3,6 +3,7 @@ package plateau;
 import java.util.ArrayList;
 
 import carte.Serviteur;
+import etatCarte.PeutJouer;
 import partie.Joueur;
 
 public class Plateau implements Observer {
@@ -26,15 +27,24 @@ public class Plateau implements Observer {
 	}
 	
 	public void invoquerServiteur(Serviteur s1, boolean isJ1){
-		this.readEffet(s1);
-		//TODO
+		s1.etat.invoquer();
+		s1 = this.readEffet(s1);
+		if (isJ1) this.serviteursJ1.add(s1);
+		else this.serviteursJ2.add(s1);
 		
 	}
 	
 	/**
-	 * se lance à la création du 
+	 * modifie le(s) serviteur(s) en fonction de ses effets
+	 * @param s1 le serviteur en paramètre
+	 * @return
 	 */
-	private void readEffet(Serviteur s1){
+	private Serviteur readEffet(Serviteur s1){
+		ArrayList<String> effets = s1.getListEffets();
+		for (String string : effets) {
+			if (string.contains("effet charge")) s1.etat.autoriserJeu();
+		}
+		return s1;
 		//TODO
 	}
 

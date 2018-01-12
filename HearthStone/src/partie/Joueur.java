@@ -55,8 +55,23 @@ public class Joueur {
 	public boolean aPerdu() {
 		return this.heros.estMort();
 	};
+	private void invoquerCarte(int index){
+		if (this.main.get(index) instanceof Serviteur) {
+			this.invoquerServiteur(index);			
+		}else {
+			this.utiliserSort(index);
+		}
+		this.main.remove(index);
+	}
 	
-	private void invoquerServiteur(Serviteur s1){
+	
+	private void utiliserSort(int index) {
+		// TODO Auto-generated method stub
 		
+	}
+
+	private void invoquerServiteur(int index){
+		Serviteur s1 = (Serviteur) this.main.get(index);
+		this.plateau.invoquerServiteur(s1, this.estJ1);
 	}
 }

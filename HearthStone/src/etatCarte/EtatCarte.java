@@ -11,5 +11,6 @@ public abstract class EtatCarte {
 	
 	public void detruire(){}
 	
+	public void autoriserJeu(){}	
 	
 }
