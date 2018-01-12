@@ -12,7 +12,10 @@ public class Plateau implements Observer {
 	private Joueur j2;
 	
 	
-	public void monstreAttaqueMonstre(Serviteur c1, Serviteur c2, boolean isJ1){
+	public void monstreAttaqueMonstre(Serviteur c1, Serviteur c2){
+		if (this.asVolDeVie(c1)){
+			j1.addPV(c1.getAttaque());
+		}
 		c2.ajoutDefense(c1.getAttaque());	
 		c1.ajoutDefense(c2.getAttaque());
 	}
@@ -49,18 +52,24 @@ public class Plateau implements Observer {
 	/**
 	 * 
 	 * @param isJ1 
-	 * @return un serviteur avec l'effet Taunt. Sinon, Null.
+	 * @return les serviteurs avec l'effet Taunt de l'adversaire. Sinon, Null.
 	 */
-	public Serviteur getEffetTaunt(boolean isJ1){
-		if (isJ1) {
-			for (Serviteur s1 : (!isJ1) ? serviteursJ1 : serviteursJ2) {
-				ArrayList<String> effets = s1.getListEffets();
-				for (String string : effets) {
-					if (string.contains("effet provoc")) return s1;
-				}
+	public ArrayList<Serviteur> getEffetTaunt(boolean isJ1){
+		ArrayList<Serviteur> serviteurs = null;
+		for (Serviteur s1 : (!isJ1) ? serviteursJ1 : serviteursJ2) {
+			ArrayList<String> effets = s1.getListEffets();
+			for (String string : effets) {
+				if (string.contains("effet provoc")) serviteurs.add(s1);
 			}
 		}
-		return null;
+		return serviteurs;
+	}
+	
+	private boolean asVolDeVie(Serviteur s1){
+		for (String string : s1.getListEffets()) {
+			if (string.contains("effet vol de vie"))return true;
+		}
+		return false;
 	}
 	
 	
