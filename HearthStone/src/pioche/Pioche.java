@@ -19,6 +19,7 @@ import carte.CartePalaConsecration;
 import carte.CarteSanglierBrocheroc;
 import carte.CarteSoldatComteOr;
 import carte.CarteYetiNoroit;
+import carte.ImageMiroir;
 import carte.RecrueMainArgent;
 import carte.Serviteur;
 import decoratorCarte.EffetCharge;
@@ -66,6 +67,8 @@ public class Pioche extends FactoryCarte {
 				carte = new EffetChefDeRaid((Serviteur) carte);
 			case "Yeti noroit": carte = new CarteYetiNoroit();
 			case "Image miroir": carte = new CarteMageImageMiroir();
+			case "Image miroir2": carte = new CarteMageImageMiroir();
+				carte = new EffetProvoc((Serviteur) carte);
 			case "Explosion des arcanes": carte = new CarteMageExplosionDesArcanes();
 			case "Metamorphose": carte = new CarteMageMetamorphose();
 			case "Champion frisselame": carte = new CartePalaChampionFrisselame();
@@ -78,6 +81,7 @@ public class Pioche extends FactoryCarte {
 				carte = new EffetProvoc((Serviteur) carte);
 			case "Maitrise du blocage": carte = new CarteGuerrierMaitriseDuBlocage();
 			case "Recrue de la Main d'argent": carte = new RecrueMainArgent();
+			
 		}
 		return carte;
 		
