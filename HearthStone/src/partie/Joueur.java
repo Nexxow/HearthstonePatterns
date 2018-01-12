@@ -71,19 +71,33 @@ public class Joueur {
 			
 			switch(input){
 				case "Jouer": 
+					
 					System.out.println("Selectionnez une carte parmis la liste avec le numéro lui correspondant");
 					this.afficherListeCartes(this.main);
 					int inputInt = sc.nextInt();
 					this.invoquerCarte(inputInt);
+					
 				case "Attaquer":
 					
-					ArrayList<Serviteur> servEnnemis = this.getServiteursEnnemis();
-					ArrayList<Carte> cartesEnnemies = new ArrayList<Carte>(servEnnemis);
+					ArrayList<Carte> cartesEnnemies;
 					System.out.println("Quel ennemi ? Entrez son id");
+					
+					ArrayList<Serviteur> serviteursTaunt = this.plateau.getEffetTaunt(estJ1);
+					
+					if (serviteursTaunt != null){
+						cartesEnnemies = new ArrayList<Carte>(serviteursTaunt);
+					}
+					else{
+						ArrayList<Serviteur> servEnnemis = this.getServiteursEnnemis();
+						cartesEnnemies = new ArrayList<Carte>(servEnnemis);
+					}
+					
+				
 					this.afficherListeCartes(cartesEnnemies);
 					int ennemi = sc.nextInt();
 					
-					Serviteur servEnnemi = servEnnemis.get(ennemi);
+				
+					Serviteur servEnnemi = (Serviteur) cartesEnnemies.get(ennemi);
 					
 					System.out.println("Avec quel allié ? Entrez son id");
 					ArrayList<Serviteur> servAllies = this.getMyServiteurs();
@@ -93,14 +107,14 @@ public class Joueur {
 					
 					Serviteur servAllie = servAllies.get(allie);
 					
-					
 					this.plateau.monstreAttaqueMonstre(servAllie, servEnnemi, estJ1);
+					
+				case "Terminer tour":
+					finTour = true;
 					
 			}
 			
 		}
-		
-		
 		
 		return null;
 	}
