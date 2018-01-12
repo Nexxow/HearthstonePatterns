@@ -4,7 +4,7 @@ import carte.Carte;
 import carte.CarteChefDeRaid;
 import carte.CarteChevaucheurDeLoup;
 import carte.CarteGuerrierAvocasCommisDoffice;
-import carte.CarteGuerrierMaîtriseDuBlocage;
+import carte.CarteGuerrierMaitriseDuBlocage;
 import carte.CarteGuerrierTourbillon;
 import carte.CarteMageExplosionDesArcanes;
 import carte.CarteMageImageMiroir;
@@ -23,19 +23,19 @@ public class FactoryCarteConcrete extends FactoryCarte {
 		Carte carte = null;
 		switch(nom) {
 			case "Sanglier brocheroc": carte = new CarteSanglierBrocheroc();
-			case "Soldat du comté-de-l'or": carte = new CarteSoldatComteOr();
+			case "Soldat du comtï¿½-de-l'or": carte = new CarteSoldatComteOr();
 			case "Chevaucheur de loup": carte = new CarteChevaucheurDeLoup();
 			case "Chef de raid": carte = new CarteChefDeRaid();
-			case "Yéti noroit": carte = new CarteYetiNoroit();
+			case "Yï¿½ti noroit": carte = new CarteYetiNoroit();
 			case "Image miroir": carte = new CarteMageImageMiroir();
 			case "Explosion des arcanes": carte = new CarteMageExplosionDesArcanes();
-			case "Métamorphose": carte = new CarteMageMetamorphose();
+			case "Mï¿½tamorphose": carte = new CarteMageMetamorphose();
 			case "Champion frisselame": carte = new CartePalaChampionFrisselame();
-			case "Bénédiction de puissance": carte = new CartePalaBenedictionDePuissance();
-			case "Consécration": carte = new CartePalaConsecration();
+			case "Bï¿½nï¿½diction de puissance": carte = new CartePalaBenedictionDePuissance();
+			case "Consï¿½cration": carte = new CartePalaConsecration();
 			case "Tourbillon": carte = new CarteGuerrierTourbillon();
 			case "Avocat commis d'office": carte = new CarteGuerrierAvocasCommisDoffice();
-			case "Maîtrise du blocage": carte = new CarteGuerrierMaîtriseDuBlocage();
+			case "Maï¿½trise du blocage": carte = new CarteGuerrierMaitriseDuBlocage();
 		}
 		return carte;
 		

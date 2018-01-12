@@ -4,13 +4,13 @@ public class PeutJouer extends EtatCarte {
 
 	@Override
 	public void jouer() {
-		// TODO Auto-generated method stub
+		this.carte.etat=new Attente();
 
 	}
 
 	@Override
 	public void detruire() {
-		// TODO Auto-generated method stub
+		this.carte.etat=new Mort();
 
 	}
 
