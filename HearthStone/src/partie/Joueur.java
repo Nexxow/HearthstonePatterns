@@ -68,43 +68,10 @@ public class Joueur {
 			
 			switch(input){
 				case "Jouer": 
-					
-					System.out.println("Selectionnez une carte parmis la liste avec le numéro lui correspondant");
-					this.afficherListeCartes(this.main);
-					int inputInt = sc.nextInt();
-					this.invoquerCarte(inputInt);
+					this.jouerInvocation(sc);
 					
 				case "Attaquer":
-					
-					ArrayList<Carte> cartesEnnemies;
-					System.out.println("Quel ennemi ? Entrez son id");
-					
-					ArrayList<Serviteur> serviteursTaunt = this.plateau.getEffetTaunt(isJ1);
-					
-					if (serviteursTaunt != null){
-						cartesEnnemies = new ArrayList<Carte>(serviteursTaunt);
-					}
-					else{
-						ArrayList<Serviteur> servEnnemis = this.getServiteursEnnemis();
-						cartesEnnemies = new ArrayList<Carte>(servEnnemis);
-					}
-					
-				
-					this.afficherListeCartes(cartesEnnemies);
-					int ennemi = sc.nextInt();
-					
-				
-					Serviteur servEnnemi = (Serviteur) cartesEnnemies.get(ennemi);
-					
-					System.out.println("Avec quel allié ? Entrez son id");
-					ArrayList<Serviteur> servAllies = this.getMyServiteurs();
-					ArrayList<Carte> cartesAllies = new ArrayList<Carte>(servAllies);
-					this.afficherListeCartes(cartesAllies);
-					int allie = sc.nextInt();
-					
-					Serviteur servAllie = servAllies.get(allie);
-					
-					this.plateau.monstreAttaqueMonstre(servAllie, servEnnemi, isJ1);
+					this.attaquer(sc);
 					
 				case "Terminer tour":
 					finTour = true;
@@ -114,6 +81,41 @@ public class Joueur {
 		}
 		
 		return null;
+	}
+	
+	public void attaquer(Scanner sc) {
+		ArrayList<Carte> cartesEnnemies;
+		System.out.println("Quel ennemi ? Entrez son id");
+		
+		ArrayList<Serviteur> serviteursTaunt = this.plateau.getEffetTaunt(isJ1);
+		
+		if (serviteursTaunt != null){
+			cartesEnnemies = new ArrayList<Carte>(serviteursTaunt);
+		}
+		else{
+			ArrayList<Serviteur> servEnnemis = this.getServiteursEnnemis();
+			cartesEnnemies = new ArrayList<Carte>(servEnnemis);
+		}
+		
+	
+		this.afficherListeCartes(cartesEnnemies);
+		int ennemi = sc.nextInt();
+		
+		System.out.println("Avec quel allie ? Entrez son id");
+		ArrayList<Serviteur> servAllies = this.getMyServiteurs();
+		ArrayList<Carte> cartesAllies = new ArrayList<Carte>(servAllies);
+		this.afficherListeCartes(cartesAllies);
+		int allie = sc.nextInt();
+
+		
+		this.plateau.monstreAttaqueMonstre(allie, ennemi, isJ1);
+	}
+	
+	public void jouerInvocation(Scanner sc) {
+		System.out.println("Selectionnez une carte parmis la liste avec le numero lui correspondant");
+		this.afficherListeCartes(this.main);
+		int inputInt = sc.nextInt();
+		this.invoquerCarte(inputInt);
 	}
 
 	public boolean aPerdu() {
