@@ -1,24 +1,22 @@
 package partie;
 
-import plateau.Plateau;
-
 public class Jeu {
 	private int tour;
-	private Plateau plateau;
 	private Joueur j1;
 	private Joueur j2;
 	
 	
 	public Jeu(Joueur j1, Joueur j2) {
+		j1.setOrdreJeu(true);
 		this.j1 = j1;
+		j2.setOrdreJeu(false);
 		this.j2 = j2;
 		this.tour = 0;
-		this.plateau=new Plateau();
 	}
 
 	/**
-	 * méthode lancé pour faire fonctionner la partie
-	 * elle s'arrête à la fin du jeu
+	 * mï¿½thode lancï¿½ pour faire fonctionner la partie
+	 * elle s'arrï¿½te ï¿½ la fin du jeu
 	 * @return 
 	 */
 	public Joueur lancerPartie(){
@@ -55,7 +53,7 @@ public class Jeu {
 	}
 
 	/**
-	 * Méthode lancé à la fin du jeu
+	 * Mï¿½thode lancï¿½ ï¿½ la fin du jeu
 	 * @param joueurPerdant
 	 * @return
 	 */
@@ -75,7 +73,7 @@ public class Jeu {
 	}
 
 	/**
-	 * organise la manière de piocher à chaque tour
+	 * organise la maniï¿½re de piocher ï¿½ chaque tour
 	 * @param joueur qui pioche
 	 */
 	private void piocher(Joueur joueur) {
