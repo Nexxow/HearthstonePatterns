@@ -35,5 +35,14 @@ public class Heros {
 		this.armure-=nb;
 		
 	}
+
+	public int getPV() {
+		return PV;
+	}
+
+	public int getArmure() {
+		return armure;
+	}
+	
 	
 }

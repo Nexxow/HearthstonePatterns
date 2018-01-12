@@ -86,6 +86,10 @@ public class Joueur {
 	}
 	
 	public void attaquer(Scanner sc) {
+		
+		int herosEnnemiPv = this.plateau.getJoueur(!isJ1).heros.getPV();
+		int herosEnnemiArmure = this.plateau.getJoueur(!isJ1).heros.getArmure();
+		
 		ArrayList<Carte> cartesEnnemies;
 		System.out.println("Quel ennemi ? Entrez son id");
 		
@@ -97,9 +101,12 @@ public class Joueur {
 		else{
 			ArrayList<Serviteur> servEnnemis = this.getServiteursEnnemis();
 			cartesEnnemies = new ArrayList<Carte>(servEnnemis);
+			System.out.println("-1 pour attaquer le héros adverse, il possède " + herosEnnemiPv + " PV, et " + herosEnnemiArmure
+					+ " armure");
+			
 		}
 		
-	
+		
 		this.afficherListeCartes(cartesEnnemies);
 		int ennemi = sc.nextInt();
 		
@@ -109,7 +116,6 @@ public class Joueur {
 		this.afficherListeCartes(cartesAllies);
 		int allie = sc.nextInt();
 
-		
 		this.plateau.monstreAttaqueMonstre(allie, ennemi, isJ1);
 	}
 	
