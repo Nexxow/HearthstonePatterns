@@ -60,7 +60,6 @@ public class Joueur {
 	 * @return le joueur perdant. Null si il n'y en a pas.
 	 */
 	public Joueur jouer() {
-		//TODO demande au joueur de selectionner des cartes et des actions.
 		
 		boolean finTour = false;
 		
