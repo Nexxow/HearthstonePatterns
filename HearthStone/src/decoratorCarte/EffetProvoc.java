@@ -1,14 +1,14 @@
 package decoratorCarte;
 
-import carte.Carte;
+import carte.Serviteur;
 
 public class EffetProvoc extends DecoratorEffet {
 
-	public EffetProvoc(Carte carte) {
-		this.description = "Effet Provocation : votre adversaire est oblig¥e díattaquer ce serviteur avant díattaquer votre h¥eros\r\n" + 
+	public EffetProvoc(Serviteur serv) {
+		this.description = "Effet Provocation : votre adversaire est oblig√© d'attaquer ce serviteur avant d'attaquer votre h√©ros\r\n" + 
 				"ou un autre serviteur sans provocation";
-		this.carte = carte;
-		this.carte.getListEffets().add(this);
+		this.serv = serv;
+		this.serv.getListEffets().add("provocation");
 	}
 	
 }

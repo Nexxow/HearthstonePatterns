@@ -1,14 +1,14 @@
 package decoratorCarte;
 
-import carte.Carte;
+import carte.Serviteur;
 
 public class EffetVolDeVie extends DecoratorEffet {
 
-	public EffetVolDeVie(Carte carte) {
-		this.description = "Effet Vol de vie : Lorsque le serviteur inflige des dégâts, votre héros récupère des points de vie" + 
-				"à la hauteur des dégâts infligés";
-		this.carte = carte;
-		this.carte.getListEffets().add(this);
+	public EffetVolDeVie(Serviteur serv) {
+		this.description = "Effet Vol de vie : Lorsque le serviteur inflige des dÃ©gats, votre hÃ©ros rÃ©cupÃ¨re des points de vie" + 
+				"Ã  la hauteur des dÃ©gats infligÃ©s";
+		this.serv = serv;
+		this.serv.getListEffets().add("serv");
 	}
 	
 }

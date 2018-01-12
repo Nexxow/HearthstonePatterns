@@ -2,6 +2,7 @@ package carte;
 
 import java.util.ArrayList;
 
+import decoratorCarte.DecoratorEffet;
 import plateau.Observable;
 import plateau.Observer;
 
@@ -9,6 +10,7 @@ public class Serviteur extends Carte implements Observable {
 
 	protected int attaque;
 	protected int defense;
+	private ArrayList<String> listEffetsStr;
 	
 	private ArrayList<Observer> obs;
 	
@@ -20,6 +22,10 @@ public class Serviteur extends Carte implements Observable {
 		for (Observer observer : obs) {
 			observer.actualiser(this);
 		}
+	}
+	
+	public ArrayList<String> getListEffets() {
+		return this.listEffetsStr;
 	}
 	
 	public void ajoutDefense(int i){

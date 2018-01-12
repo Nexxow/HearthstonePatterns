@@ -1,10 +1,10 @@
 package decoratorCarte;
 
-import carte.Carte;
+import carte.Serviteur;
 
-public abstract class DecoratorEffet extends Carte {
+public abstract class DecoratorEffet extends Serviteur {
 	protected String description;
-	protected Carte carte;
+	protected Serviteur serv;
 
 	/**
 	 * @return the description
